@@ -1,10 +1,16 @@
-int leftDirectionPin = 12;  // pins for left ear
-int leftPwmPin = 3;
-int leftBrakePin = 9;
+//int leftDirectionPin = 12;  // pins for left ear
+//int leftPwmPin = 3;
+//int leftBrakePin = 9;
 
-int rightDirectionPin = 11;  // pins for right ear
-int rightPwmPin = 5;
-int rightBrakePin = 10;
+int leftGoingLPin = 11;
+int leftGoingRPin = 8;
+
+int rightGoingLPin = 6;
+int rightGoingRPin = 3;
+
+//int rightDirectionPin = 11;  // pins for right ear
+//int rightPwmPin = 5;
+//int rightBrakePin = 10;
 
 void moveEarLeft(int directionPin, int pwmPin, int brakePin, int duration, int speed, int delay) {
   digitalWrite(directionPin, LOW); // Set direction for left ear
@@ -17,20 +23,24 @@ void moveEarRight(int directionPin, int pwmPin, int brakePin, int duration, int 
   digitalWrite(directionPin, HIGH); // Set direction for left ear
   analogWrite(pwmPin, speed); // Move left ear
   delay(duration); // How long it moves
-  analogWrite(pwmPin, stopLength); // Stop for 3 seconds
+  analogWrite(pwmPin, 0); // Stop for 3 seconds
   delay(delay);
+}
+
+void moveLeftEar(int directionPin, int duration, int delay) {
+  digitalWrite(directionPin);
+  delay(duration);
+
 }
 
 void setup() {
   delay(5000);
 
-  pinMode(leftDirectionPin, OUTPUT);
-  pinMode(leftPwmPin, OUTPUT);
-  pinMode(leftBrakePin, OUTPUT);
+  pinMode(leftGoingLPin, OUTPUT);
+  pinMode(leftGoingRPin, OUTPUT);
 
-  pinMode(rightDirectionPin, OUTPUT);
-  pinMode(rightPwmPin, OUTPUT);
-  pinMode(rightBrakePin, OUTPUT);
+  pinMode(rightGoingLPin, OUTPUT);
+  pinMode(rightGoingRPin, OUTPUT);
 
 }
 
